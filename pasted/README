@@ -1,0 +1,5 @@
+This will be a service that will receive a stream of text 
+parse it and convert it into a consumable data source 
+https://google-developers.appspot.com/chart/interactive/docs/dev/gviz_api_lib
+I will begin by processing the output of sadf and then I will make it process other types of data
+such as logs. Or debugfs

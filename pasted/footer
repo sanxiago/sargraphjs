@@ -7,6 +7,6 @@
       
 
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-<script type="text/javascript" src="include/graph.js"></script>
+<script type="text/javascript" src="../include/graph.js"></script>
 </body>
 </html>

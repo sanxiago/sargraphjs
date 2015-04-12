@@ -6,7 +6,7 @@ ulimit -m 1024
 path=/home/paste
 file=$path"/out/out_"$REMOTE_HOST"_"$(date +%s )".html"
 cat $path"/pasted/"header > $file
-echo http://graph.sanxiago.com/$(basename $file)
+echo http://graph.sanxiago.com/out/$(basename $file)
   if read -t 0; 
     then
         cat >> $file 

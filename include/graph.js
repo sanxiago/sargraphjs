@@ -103,35 +103,46 @@ function createDiv(id,target) {
 
 function graphData(headers,datas,div){
 	var data = new google.visualization.DataTable();
-	var exclude_header = new RegExp("hostname|interval");
+	var check_is_number = new RegExp("^[0-9\.]+$");
 	var check_is_timestamp = new RegExp("timestamp");
-	var columns_to_remove = [];
+	var check_is_excluded = new RegExp("^[A-Z]+$|hostname|interval");
+	var excluded= {};
+	var rows = [];
 	for ( var header in headers){
-	if(exclude_header.test(headers[header])){
-		columns_to_remove.push(header);
-	}else{
 		if( check_is_timestamp.test(headers[header])){
+			excluded[header]=false;
       			data.addColumn('number', "X");
-		}else{
-      			data.addColumn('number', headers[header]);
+		}
+		else{
+			if( check_is_excluded.test(headers[header])){
+				excluded[header]=true;
+			}else{
+				excluded[header]=false;
+      				data.addColumn('number', headers[header]);
+			}
 		}
 	}
-	}
-        while (columns_to_remove.length>0){
-		var col = columns_to_remove.pop();
-		for ( var d in datas){
-			datas[d].splice(col,1);
-			datas[d]=datas[d].map(Number);
+	console.log(excluded);
+	console.log(datas);
+	for( var i in datas){
+		var row = [];
+		for( var j in datas[i]){
+			if(excluded[j]==false){
+			//	console.log(i + "," + j + "->" + datas[i][j]);
+				row.push(Number(datas[i][j]));
+			}
 		}
+		rows.push(row);
 	}
-      data.addRows(datas);
+	console.log(rows);
+	data.addRows(rows);
 
       var options = {
         hAxis: {
           title: 'Time'
         },
         vAxis: {
-          title: 'Popularity'
+          title: ''
         },
 	legend: {
 		position: 'top',

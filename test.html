@@ -1,0 +1,610 @@
+<html>
+
+  <head>
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+    
+      // Load the Visualization API and the piechart package.
+      google.load('visualization', '1.0', {'packages':['corechart']});
+      
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table, 
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+      // Create the data table.
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Topping');
+      data.addColumn('number', 'Slices');
+      data.addRows([
+        ['Mushrooms', 3],
+        ['Onions', 1],
+        ['Olives', 1], 
+        ['Zucchini', 1],
+        ['Pepperoni', 2]
+      ]);
+
+      // Set chart options
+      var options = {'title':'How Much Pizza I Ate Last Night',
+                     'width':400,
+                     'height':300};
+
+      // Instantiate and draw our chart, passing in some options.
+      var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+      chart.draw(data, options);
+
+    }
+var sar={"sysstat": {
+	"sysdata-version": 2.15,
+	"hosts": [
+		{
+			"nodename": "sargraph",
+			"sysname": "Linux",
+			"release": "3.10.0-123.20.1.el7.x86_64",
+			"machine": "x86_64",
+			"number-of-cpus": 1,
+			"file-date": "2015-04-12",
+			"statistics": [
+				{
+					"timestamp": {"date": "2015-04-12", "time": "00:10:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.14, "nice": 0.00, "system": 0.17, "iowait": 0.07, "steal": 0.12, "idle": 99.51}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "00:20:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.03, "nice": 0.00, "system": 0.05, "iowait": 0.01, "steal": 0.11, "idle": 99.81}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "00:30:01", "utc": 1, "interval": 600},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.03, "nice": 0.00, "system": 0.06, "iowait": 0.00, "steal": 0.12, "idle": 99.79}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "00:40:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.11, "nice": 0.00, "system": 0.17, "iowait": 0.03, "steal": 0.13, "idle": 99.57}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "00:50:01", "utc": 1, "interval": 600},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.03, "nice": 0.00, "system": 0.06, "iowait": 0.01, "steal": 0.11, "idle": 99.79}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "01:00:01", "utc": 1, "interval": 600},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.04, "nice": 0.00, "system": 0.08, "iowait": 0.01, "steal": 0.13, "idle": 99.75}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "01:10:01", "utc": 1, "interval": 600},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.10, "nice": 0.00, "system": 0.14, "iowait": 0.05, "steal": 0.11, "idle": 99.59}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "01:20:01", "utc": 1, "interval": 600},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.03, "nice": 0.00, "system": 0.06, "iowait": 0.01, "steal": 0.11, "idle": 99.80}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "01:30:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.12, "nice": 0.00, "system": 0.14, "iowait": 0.02, "steal": 0.11, "idle": 99.61}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "01:40:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.15, "nice": 0.00, "system": 0.17, "iowait": 0.04, "steal": 0.11, "idle": 99.53}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "01:50:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.06, "nice": 0.00, "system": 0.09, "iowait": 0.02, "steal": 0.11, "idle": 99.72}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "02:00:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.13, "nice": 0.00, "system": 0.16, "iowait": 0.03, "steal": 0.11, "idle": 99.57}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "02:10:01", "utc": 1, "interval": 600},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.03, "nice": 0.00, "system": 0.07, "iowait": 0.01, "steal": 0.10, "idle": 99.80}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "02:20:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.03, "nice": 0.00, "system": 0.07, "iowait": 0.16, "steal": 0.12, "idle": 99.62}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "02:30:02", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.11, "nice": 0.00, "system": 0.15, "iowait": 0.04, "steal": 0.10, "idle": 99.60}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "02:40:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.03, "nice": 0.00, "system": 0.06, "iowait": 0.01, "steal": 0.11, "idle": 99.79}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "02:50:01", "utc": 1, "interval": 600},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.03, "nice": 0.00, "system": 0.06, "iowait": 0.01, "steal": 0.11, "idle": 99.80}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "03:00:01", "utc": 1, "interval": 600},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.03, "nice": 0.00, "system": 0.05, "iowait": 0.00, "steal": 0.10, "idle": 99.81}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "03:10:01", "utc": 1, "interval": 600},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.03, "nice": 0.00, "system": 0.06, "iowait": 0.01, "steal": 0.10, "idle": 99.80}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "03:20:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.07, "nice": 0.09, "system": 0.24, "iowait": 1.38, "steal": 0.11, "idle": 98.12}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "03:30:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.06, "nice": 0.00, "system": 0.09, "iowait": 0.01, "steal": 0.10, "idle": 99.73}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "03:40:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.03, "nice": 0.00, "system": 0.05, "iowait": 0.01, "steal": 0.11, "idle": 99.80}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "03:50:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.02, "nice": 0.00, "system": 0.06, "iowait": 0.01, "steal": 0.11, "idle": 99.80}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "04:00:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.12, "nice": 0.00, "system": 0.14, "iowait": 0.02, "steal": 0.10, "idle": 99.62}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "04:10:01", "utc": 1, "interval": 600},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.03, "nice": 0.00, "system": 0.06, "iowait": 0.00, "steal": 0.09, "idle": 99.81}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "04:20:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.03, "nice": 0.00, "system": 0.05, "iowait": 0.01, "steal": 0.10, "idle": 99.82}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "04:30:01", "utc": 1, "interval": 600},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.02, "nice": 0.00, "system": 0.05, "iowait": 0.05, "steal": 0.13, "idle": 99.74}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "04:40:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.03, "nice": 0.00, "system": 0.05, "iowait": 0.05, "steal": 0.11, "idle": 99.77}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "04:50:01", "utc": 1, "interval": 600},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.06, "nice": 0.00, "system": 0.08, "iowait": 0.10, "steal": 0.12, "idle": 99.64}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "05:00:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.08, "nice": 0.00, "system": 0.10, "iowait": 0.12, "steal": 0.11, "idle": 99.60}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "05:10:02", "utc": 1, "interval": 600},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.03, "nice": 0.00, "system": 0.06, "iowait": 0.03, "steal": 0.11, "idle": 99.77}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "05:20:01", "utc": 1, "interval": 598},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.10, "nice": 0.00, "system": 0.13, "iowait": 0.04, "steal": 0.12, "idle": 99.61}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "05:30:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.03, "nice": 0.00, "system": 0.07, "iowait": 0.01, "steal": 0.11, "idle": 99.78}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "05:40:01", "utc": 1, "interval": 600},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.03, "nice": 0.00, "system": 0.07, "iowait": 0.01, "steal": 0.12, "idle": 99.78}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "05:50:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.12, "nice": 0.00, "system": 0.15, "iowait": 0.03, "steal": 0.12, "idle": 99.58}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "06:00:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.02, "nice": 0.00, "system": 0.06, "iowait": 0.01, "steal": 0.11, "idle": 99.80}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "06:10:01", "utc": 1, "interval": 600},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.03, "nice": 0.00, "system": 0.09, "iowait": 0.04, "steal": 0.19, "idle": 99.65}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "06:20:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.44, "nice": 0.00, "system": 0.47, "iowait": 0.44, "steal": 0.18, "idle": 98.48}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "06:30:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.18, "nice": 0.00, "system": 0.20, "iowait": 0.12, "steal": 0.15, "idle": 99.36}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "06:40:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.06, "nice": 0.00, "system": 0.09, "iowait": 0.04, "steal": 0.11, "idle": 99.70}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "06:50:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.13, "nice": 0.00, "system": 0.16, "iowait": 0.07, "steal": 0.12, "idle": 99.52}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "07:00:01", "utc": 1, "interval": 600},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.03, "nice": 0.00, "system": 0.05, "iowait": 0.01, "steal": 0.10, "idle": 99.81}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "07:10:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.17, "nice": 0.00, "system": 0.19, "iowait": 0.03, "steal": 0.10, "idle": 99.52}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "07:20:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.07, "nice": 0.00, "system": 0.10, "iowait": 0.02, "steal": 0.11, "idle": 99.69}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "07:30:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.03, "nice": 0.00, "system": 0.05, "iowait": 0.00, "steal": 0.10, "idle": 99.82}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "07:40:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.12, "nice": 0.00, "system": 0.15, "iowait": 0.04, "steal": 0.11, "idle": 99.58}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "07:50:01", "utc": 1, "interval": 600},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.02, "nice": 0.00, "system": 0.05, "iowait": 0.01, "steal": 0.11, "idle": 99.80}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "08:00:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.03, "nice": 0.00, "system": 0.06, "iowait": 0.01, "steal": 0.11, "idle": 99.81}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "08:10:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.12, "nice": 0.00, "system": 0.16, "iowait": 0.03, "steal": 0.11, "idle": 99.59}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "08:20:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.02, "nice": 0.00, "system": 0.06, "iowait": 0.01, "steal": 0.10, "idle": 99.81}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "08:30:02", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.09, "nice": 0.00, "system": 0.12, "iowait": 0.03, "steal": 0.11, "idle": 99.65}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "08:40:01", "utc": 1, "interval": 598},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.05, "nice": 0.00, "system": 0.08, "iowait": 0.01, "steal": 0.11, "idle": 99.76}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "08:50:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.03, "nice": 0.00, "system": 0.06, "iowait": 0.01, "steal": 0.11, "idle": 99.79}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "09:00:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.05, "nice": 0.00, "system": 0.08, "iowait": 0.04, "steal": 0.11, "idle": 99.73}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "09:10:01", "utc": 1, "interval": 600},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.09, "nice": 0.00, "system": 0.12, "iowait": 0.05, "steal": 0.11, "idle": 99.63}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "09:20:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.02, "nice": 0.00, "system": 0.06, "iowait": 0.02, "steal": 0.12, "idle": 99.78}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "09:30:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.19, "nice": 0.00, "system": 0.23, "iowait": 0.05, "steal": 0.10, "idle": 99.44}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "09:40:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.02, "nice": 0.00, "system": 0.05, "iowait": 0.01, "steal": 0.11, "idle": 99.81}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "09:50:01", "utc": 1, "interval": 600},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.03, "nice": 0.00, "system": 0.05, "iowait": 0.01, "steal": 0.11, "idle": 99.80}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "10:00:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.10, "nice": 0.00, "system": 0.14, "iowait": 0.05, "steal": 0.10, "idle": 99.60}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "10:10:01", "utc": 1, "interval": 600},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.03, "nice": 0.00, "system": 0.06, "iowait": 0.01, "steal": 0.10, "idle": 99.80}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "10:20:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.04, "nice": 0.00, "system": 0.07, "iowait": 0.01, "steal": 0.10, "idle": 99.79}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "10:30:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.09, "nice": 0.00, "system": 0.11, "iowait": 0.03, "steal": 0.12, "idle": 99.65}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "10:40:01", "utc": 1, "interval": 600},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.03, "nice": 0.00, "system": 0.06, "iowait": 0.01, "steal": 0.11, "idle": 99.79}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "10:50:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.09, "nice": 0.00, "system": 0.12, "iowait": 0.09, "steal": 0.12, "idle": 99.59}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "11:00:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.02, "nice": 0.00, "system": 0.06, "iowait": 0.03, "steal": 0.11, "idle": 99.79}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "11:10:01", "utc": 1, "interval": 600},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.03, "nice": 0.00, "system": 0.05, "iowait": 0.21, "steal": 0.10, "idle": 99.60}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "11:20:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.12, "nice": 0.00, "system": 0.14, "iowait": 0.35, "steal": 0.14, "idle": 99.25}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "11:30:01", "utc": 1, "interval": 600},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.03, "nice": 0.00, "system": 0.05, "iowait": 0.05, "steal": 0.12, "idle": 99.76}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "11:40:02", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.09, "nice": 0.00, "system": 0.12, "iowait": 0.22, "steal": 0.13, "idle": 99.45}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "11:50:01", "utc": 1, "interval": 598},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.05, "nice": 0.00, "system": 0.08, "iowait": 0.27, "steal": 0.13, "idle": 99.47}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "12:00:01", "utc": 1, "interval": 600},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.03, "nice": 0.00, "system": 0.05, "iowait": 0.15, "steal": 0.13, "idle": 99.65}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "12:10:01", "utc": 1, "interval": 600},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.09, "nice": 0.00, "system": 0.12, "iowait": 0.11, "steal": 0.13, "idle": 99.55}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "12:20:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.05, "nice": 0.00, "system": 0.08, "iowait": 0.07, "steal": 0.13, "idle": 99.67}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "12:30:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.03, "nice": 0.00, "system": 0.05, "iowait": 0.07, "steal": 0.11, "idle": 99.74}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "12:40:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.11, "nice": 0.00, "system": 0.14, "iowait": 0.11, "steal": 0.11, "idle": 99.54}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "12:50:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.03, "nice": 0.00, "system": 0.05, "iowait": 0.06, "steal": 0.11, "idle": 99.75}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "13:00:01", "utc": 1, "interval": 600},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.03, "nice": 0.00, "system": 0.05, "iowait": 0.15, "steal": 0.12, "idle": 99.65}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "13:10:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.10, "nice": 0.00, "system": 0.12, "iowait": 0.13, "steal": 0.11, "idle": 99.54}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "13:20:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.03, "nice": 0.00, "system": 0.05, "iowait": 0.03, "steal": 0.11, "idle": 99.79}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "13:30:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.03, "nice": 0.00, "system": 0.05, "iowait": 0.05, "steal": 0.11, "idle": 99.76}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "13:40:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.11, "nice": 0.00, "system": 0.13, "iowait": 0.20, "steal": 0.11, "idle": 99.46}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "13:50:02", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.03, "nice": 0.00, "system": 0.05, "iowait": 0.01, "steal": 0.11, "idle": 99.81}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "14:00:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.08, "nice": 0.00, "system": 0.10, "iowait": 0.10, "steal": 0.13, "idle": 99.60}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "14:10:01", "utc": 1, "interval": 600},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.08, "nice": 0.00, "system": 0.11, "iowait": 0.23, "steal": 0.12, "idle": 99.46}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "14:20:01", "utc": 1, "interval": 600},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.02, "nice": 0.00, "system": 0.05, "iowait": 0.07, "steal": 0.15, "idle": 99.70}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "14:30:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.78, "nice": 0.00, "system": 0.31, "iowait": 1.72, "steal": 0.14, "idle": 97.06}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "14:40:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.23, "nice": 0.00, "system": 0.17, "iowait": 0.37, "steal": 0.11, "idle": 99.12}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "14:50:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.18, "nice": 0.00, "system": 0.16, "iowait": 0.32, "steal": 0.13, "idle": 99.21}
+					]
+				},
+				{
+					"timestamp": {"date": "2015-04-12", "time": "15:00:01", "utc": 1, "interval": 599},
+					"cpu-load": [
+						{"cpu": "all", "user": 0.19, "nice": 0.00, "system": 0.19, "iowait": 0.24, "steal": 0.13, "idle": 99.26}
+					]
+				}
+			],
+			"restarts": [
+			]
+		}
+	]
+}}
+
+console.log(sar)
+
+</script>
+  </head>
+
+
+<body>
+<!--Div that will hold the pie chart-->
+    <div id="chart_div" style="width:400; height:300"></div>
+
+</body>
+</html>
