@@ -1,0 +1,12 @@
+</textarea>
+<br>
+<input type="button" onclick="readInput()" value='graph data'>
+<br>
+<div id="output"></div>
+<div id="chart_div"><div>
+      
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript" src="include/graph.js"></script>
+</body>
+</html>

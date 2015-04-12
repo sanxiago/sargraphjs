@@ -1,0 +1,5 @@
+<!DOCTYPE html>
+<html>
+<body onLoad="readInput();">
+
+<textarea cols=120 id="textinput" class="textinput" >
