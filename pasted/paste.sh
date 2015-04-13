@@ -9,8 +9,8 @@ cat $path"/pasted/"header > $file
 echo http://graph.sanxiago.com/out/$(basename $file)
   if read -t 0; 
     then
-        cat | sed -s '/\</./g' >> $file 
+        cat | sed -s 's/</./g' >> $file 
     else
-        echo "$*" | sed -s '/\</./g'  > $file
+        echo "$*" | sed -s 's/</./g'  > $file
     fi
 cat $path"/pasted/"footer >> $file

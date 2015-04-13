@@ -107,11 +107,13 @@ function graphData(headers,datas,div){
 	var check_is_timestamp = new RegExp("timestamp");
 	var check_is_excluded = new RegExp("^[A-Z]+$|hostname|interval");
 	var excluded= {};
+	var is_timestamp = {} ;
 	var rows = [];
 	for ( var header in headers){
 		if( check_is_timestamp.test(headers[header])){
-			excluded[header]=false;
-      			data.addColumn('number', "X");
+			excluded[header]=true;
+      			data.addColumn('datetime', "X");
+			is_timestamp[header]=true;
 		}
 		else{
 			if( check_is_excluded.test(headers[header])){
@@ -130,7 +132,9 @@ function graphData(headers,datas,div){
 			if(excluded[j]==false){
 			//	console.log(i + "," + j + "->" + datas[i][j]);
 				row.push(Number(datas[i][j]));
-			}
+			}else { if(is_timestamp[j]){
+				row.push(new Date(datas[i][j]));
+			}}
 		}
 		rows.push(row);
 	}
