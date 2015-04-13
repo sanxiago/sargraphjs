@@ -9,3 +9,9 @@ using google charts https://developers.google.com/chart/
 
 Eventually this can be used to graph other type of outputs, but will be content if it works with sar for now.
 
+The working javascript can be seen here, you can paste your sadf -d output there.
+http://graph.sanxiago.com
+
+You can also pipe the output of sadf -d using netcat to the server and it will create a page with the data, no need to copy paste. It will give you the url with your data in response.
+
+sadf -d -- -A -p | nc graph.sanxiago.com 443
