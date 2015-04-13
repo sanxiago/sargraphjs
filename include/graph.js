@@ -124,8 +124,8 @@ function graphData(headers,datas,div){
 			}
 		}
 	}
-	console.log(excluded);
-	console.log(datas);
+//	console.log(excluded);
+//	console.log(datas);
 	for( var i in datas){
 		var row = [];
 		for( var j in datas[i]){
@@ -133,12 +133,13 @@ function graphData(headers,datas,div){
 			//	console.log(i + "," + j + "->" + datas[i][j]);
 				row.push(Number(datas[i][j]));
 			}else { if(is_timestamp[j]){
-				row.push(new Date(datas[i][j]));
+				var m = datas[i][j].match(/([0-9]{4})-([0-1][0-9])-([0-3][0-9])\s+([0-2][0-9]):([0-9][0-9]):([0-9][0-9])\s+([A-z]+)/);
+				row.push(new Date(m[1],m[2],m[3],m[4],m[5],m[6]));
 			}}
 		}
 		rows.push(row);
 	}
-	console.log(rows);
+//	console.log(rows);
 	data.addRows(rows);
 
       var options = {
