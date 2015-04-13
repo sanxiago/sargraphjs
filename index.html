@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body onLoad="readInput();">
+<p>Paste the output of sadf in the textbox below</p>
+<code>sadf -d -- -A -p</code>
+<br>
+<p>Or pipe it directly with nc to port 443</p>
+<code>sadf -d -- -A -p | graph.sanxiago.com 443</code>
+<br>
+<br>
+<textarea cols=120 id="textinput" class="textinput" >
+</textarea>
+<br>
+<input type="button" onclick="readInput()" value='graph data'>
+<br>
+<div id="output"></div>
+<div id="chart_div"><div>
+      
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript" src="include/graph.js"></script>
+</body>
+</html>
