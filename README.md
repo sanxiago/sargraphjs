@@ -15,3 +15,8 @@ http://graph.sanxiago.com
 You can also pipe the output of sadf -d using netcat to the server and it will create a page with the data, no need to copy paste. It will give you the url with your data in response.
 
 sadf -d -- -A -p | nc graph.sanxiago.com 443
+
+Moving forward google may abandon the js chart project in the next days
+https://developers.google.com/chart/terms
+
+I will switch the graphing engine, so far I have tested chartjs and it seems like a great replacement.
