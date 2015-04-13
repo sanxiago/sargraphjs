@@ -4,7 +4,11 @@ ulimit -f 1024
 ulimit -t 10
 ulimit -m 1024
 path=/home/paste
-file=$path"/out/out_"$REMOTE_HOST"_"$(date +%s )".html"
+random=$(base64 /dev/urandom | head -c 32 )
+timestamp=$(date +%s)
+F=$(echo $random$timestamp | base64 | sed -s 's/\//P/g' | sed -s 's/=/F/g')
+file=$path"/out/"$F".html"
+
 cat $path"/pasted/"header > $file
 echo http://graph.sanxiago.com/out/$(basename $file)
   if read -t 0; 
