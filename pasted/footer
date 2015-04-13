@@ -8,5 +8,9 @@
 
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript" src="../include/graph.js"></script>
+<br>
+<a href="../LICENSE"> LICENSE</a>
+<br>
+<a href="https://github.com/sanxiago/sargraphjs"> Source Code </a>
 </body>
 </html>
