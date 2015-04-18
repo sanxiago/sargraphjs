@@ -133,13 +133,18 @@ function graphData(headers,datas,div){
 			//	console.log(i + "," + j + "->" + datas[i][j]);
 				row.push(Number(datas[i][j]));
 			}else { if(is_timestamp[j]){
-				var m = datas[i][j].match(/([0-9]{4})-([0-1][0-9])-([0-3][0-9])\s+([0-2][0-9]):([0-9][0-9]):([0-9][0-9])\s+([A-z]+)/);
-				row.push(new Date(m[1],m[2]-1,m[3],m[4],m[5],m[6]));
+				var m = datas[i][j].match(/([0-9]{4})-([0-1][0-9])-([0-3][0-9])\s+([0-2][0-9])(:|-)([0-9][0-9])(:|-)([0-9][0-9])\s+([A-z]+)/);
+				if(m != null){
+					row.push(new Date(m[1],m[2]-1,m[3],m[4],m[6],m[8]));
+				}
 			}}
 		}
-		rows.push(row);
+		if(m != null){
+			rows.push(row);
+		}
 	}
 //	console.log(rows);
+//	console.log(data);
 	data.addRows(rows);
 
       var options = {
