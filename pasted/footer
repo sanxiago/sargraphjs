@@ -6,11 +6,11 @@
 <div id="chart_div"><div>
       
 
-<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-<script type="text/javascript" src="../include/graph.js"></script>
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+<script type="text/javascript" src="http://cdn.rawgit.com/sanxiago/sargraphjs/master/include/graph.js"></script>
 <br>
-<a href="../LICENSE"> LICENSE</a>
+<a href="http://cdn.rawgit.com/sanxiago/sargraphjs/master/LICENSE"> LICENSE</a>
 <br>
-<a href="https://github.com/sanxiago/sargraphjs"> Source Code </a>
+<a href="http://github.com/sanxiago/sargraphjs"> Source Code </a>
 </body>
 </html>
