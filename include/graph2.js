@@ -2,31 +2,31 @@
 
 // human friendly titles based on the first line
 var graph_titles = { 
-"CPU utilization" : "timestamp;CPU;%usr;%nice;%sys;%iowait;%steal;%irq;%soft;%guest;%idle",
-"Task creation" : "timestamp;proc/s;",
-"Context switching activity" : "timestamp;cswch/s",
-"Swapping statistics " : "timestamp;pswpin/s;pswpout/s",
-"Paging statistics" : "timestamp;pgpgin/s;pgpgout/s;fault/s;majflt/s;pgfree/s;pgscank/s;pgscand/s;pgsteal/s;%vmeff",
-"I/O and transfer rate statistics" : "timestamp;tps;rtps;wtps;bread/s;bwrtn/s",
-"Memory Statistics" : "timestamp;frmpg/s;bufpg/s;campg/s",
-"Swap Utilization" : "timestamp;kbswpfree;kbswpused;kbswpcad;",
-"Swap Utilization Percentage" : "timestamp;%swpused;%swpcad",
-"Memory Utilization" : "timestamp;kbmemfree;kbmemused;kbbuffers;kbcached;kbcommit;",
-"Memory Utilization Percentage" : "timestamp;%memused;%commit",
-"Status of inode, file and other kernel tables" : "timestamp;dentunusd;file-nr;inode-nr;pty-nr",
-"Queue length" : "timestamp;runq-sz;plist-sz;",
-"Load average" : "timestamp;ldavg-1;ldavg-5;ldavg-15",
-"TTY devices activity" : "timestamp;TTY;rcvin/s;txmtin/s;framerr/s;prtyerr/s;brk/s;ovrun/s",
-"Activity for each block device" : "timestamp;DEV;tps;avgrq-sz;avgqu-sz;await;svctm;",
-"Usage block device" : "timestamp;DEV;%util",
-"R/W per second block device" : "timestamp;DEV;rd_sec/s;wr_sec/s;",
-"Network statistics kiloBytes" : "timestamp;IFACE;rxkB/s;txkB/s;",
-"Network statistics Packets" : "timestamp;IFACE;rxpck/s;txpck/s;",
-"Network statistics" : "timestamp;IFACE;rxcmp/s;txcmp/s;rxmcst/s",
-"Network error statistics" : "timestamp;IFACE;rxerr/s;txerr/s;coll/s;rxdrop/s;txdrop/s;txcarr/s;rxfram/s;rxfifo/s;txfifo/s",
-"NFS client activity" : "timestamp;call/s;retrans/s;read/s;write/s;access/s;getatt/s",
-"NFSD server activity" : "timestamp;scall/s;badcall/s;packet/s;udp/s;tcp/s;hit/s;miss/s;sread/s;swrite/s;saccess/s;sgetatt/s",
-"Network Sockets" : "timestamp;totsck;tcpsck;udpsck;rawsck;ip-frag;tcp-tw"
+"CPU utilization" : [ '%usr', '%nice', '%sys', '%iowait' , '%steal' , '%irq' , '%soft', '%guest' , '%idle' ],
+"Task creation" : ['proc/s' ],
+"Context switching activity" : [ "cswch/s" ],
+"Swapping statistics " : ['pswpin/s' , 'pswpout/s' ],
+"Paging statistics" : [ 'pgpgin/s' , 'pgpgout/s' , 'fault/s' , 'majflt/s' , 'pgfree/s' , 'pgscank/s' , 'pgscand/s' , 'pgsteal/s' , '%vmeff'],
+"I/O and transfer rate statistics" : [ 'tps' , 'rtps' , 'wtps' , 'bread/s' , 'bwrtn/s'],
+"Memory Statistics" : ['frmpg/s' , 'bufpg/s' , 'campg/s'],
+"Swap Utilization" : ['kbswpfree' , 'kbswpused' , 'kbswpcad' ],
+"Swap Utilization Percentage" : ['%swpused' , '%swpcad'],
+"Memory Utilization" : ['kbmemfree' , 'kbmemused' , 'kbbuffers' , 'kbcached' , 'kbcommit' ],
+"Memory Utilization Percentage" : ['%memused' , '%commit'],
+"Status of inode, file and other kernel tables" : ['dentunusd' , 'file-nr' , 'inode-nr' , 'pty-nr'],
+"Queue length" : ['runq-sz' , 'plist-sz' ],
+"Load average" : ['ldavg-1' , 'ldavg-5' , 'ldavg-15'],
+"TTY devices activity" : ['rcvin/s' , 'txmtin/s' , 'framerr/s' , 'prtyerr/s' , 'brk/s' , 'ovrun/s' ],
+"Activity for each block device" : ['tps' , 'avgrq-sz' , 'avgqu-sz' , 'await' , 'svctm'],
+"Usage block device" : ['%util'],
+"R/W per second block device" : ['rd_sec/s' , 'wr_sec/s'],
+"Network statistics kiloBytes" : ['IFACE' , 'rxkB/s' , 'txkB/s'],
+"Network statistics Packets" : ['IFACE' , 'rxpck/s' , 'txpck/s'],
+"Network statistics" : ['IFACE' , 'rxcmp/s' , 'txcmp/s' , 'rxmcst/s'],
+"Network error statistics" : ['IFACE' , 'rxerr/s' , 'txerr/s' , 'coll/s' , 'rxdrop/s' , 'txdrop/s' , 'txcarr/s' , 'rxfram/s' , 'rxfifo/s' , 'txfifo/s'],
+"NFS client activity" : ['call/s' , 'retrans/s' , 'read/s' , 'write/s' , 'access/s' , 'getatt/s'],
+"NFSD server activity" : ['scall/s' , 'badcall/s' , 'packet/s' , 'udp/s' , 'tcp/s' , 'hit/s' , 'miss/s' , 'sread/s' , 'swrite/s' , 'saccess/s' , 'sgetatt/s'],
+"Network Sockets" : ['totsck' , 'tcpsck' , 'udpsck' , 'rawsck' , 'ip-frag' , 'tcp-tw']
 }
 
 var datetimes = []
@@ -75,22 +75,55 @@ function readInput(){
             } 
         }
      } // foreach line
-print()
+    create_graphs()
 }
 
-function print(){
+function create_graphs(){
+    function createDiv(id,target,title) {
+        parentElement = document.getElementById(target)
+        var d = document.createElement("div")
+        d.setAttribute("id", "output_"+id)
+        parentElement.appendChild(d)
+        parentElement = document.getElementById("output_"+id)
+        var d = document.createElement("p")
+        d.innerHTML = title
+        d.setAttribute("id", "title_"+id)
+        parentElement.appendChild(d)
+        var d = document.createElement("div")
+        d.setAttribute("id" , "graph_"+id)
+        parentElement.appendChild(d)
+    }
+
+    
+    document.getElementById("output").innerHTML = '' // reset ouput
+
+    for (title in graph_titles){
+        var id = title.toLowerCase().replace(/[^A-z]/ig,'_')
+        console.log(graph_titles)
+        createDiv( id, "output" , title )
+        print(title)
+    }
+
+}
+
+function print(title){
+    var id = title.toLowerCase().replace(/[^A-z]/ig,'_')
     var col_x = []
     col_x.push('date')
     for (d in datetimes){
         col_x.push(d)
     }
+    columnas = []
+    columnas.push(col_x)
+    columnas.push(statistics['%idle']['all'])
+
     console.log(statistics)
     var chart_args = {
-        bindto: '#chart_div',
+        bindto: '#graph_'+id,
         data: {
           x : 'date',
           xFormat : '%Y-%m-%d:%H:%M:%S',
-          columns: [col_x, statistics['%idle']['all']  ]
+          columns: columnas
         },
         axis : {
           x : {
@@ -104,3 +137,5 @@ function print(){
     console.log(chart_args)
     var chart = c3.generate(chart_args)
 }
+
+
