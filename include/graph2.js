@@ -20,10 +20,10 @@ var graph_titles = {
 "Activity for each block device" : ['tps' , 'avgrq-sz' , 'avgqu-sz' , 'await' , 'svctm'],
 "Usage block device" : ['%util'],
 "R/W per second block device" : ['rd_sec/s' , 'wr_sec/s'],
-"Network statistics kiloBytes" : ['IFACE' , 'rxkB/s' , 'txkB/s'],
-"Network statistics Packets" : ['IFACE' , 'rxpck/s' , 'txpck/s'],
-"Network statistics" : ['IFACE' , 'rxcmp/s' , 'txcmp/s' , 'rxmcst/s'],
-"Network error statistics" : ['IFACE' , 'rxerr/s' , 'txerr/s' , 'coll/s' , 'rxdrop/s' , 'txdrop/s' , 'txcarr/s' , 'rxfram/s' , 'rxfifo/s' , 'txfifo/s'],
+"Network statistics kiloBytes" : ['rxkB/s' , 'txkB/s'],
+"Network statistics Packets" : ['rxpck/s' , 'txpck/s'],
+"Network statistics" : ['rxcmp/s' , 'txcmp/s' , 'rxmcst/s'],
+"Network error statistics" : ['rxerr/s' , 'txerr/s' , 'coll/s' , 'rxdrop/s' , 'txdrop/s' , 'txcarr/s' , 'rxfram/s' , 'rxfifo/s' , 'txfifo/s'],
 "NFS client activity" : ['call/s' , 'retrans/s' , 'read/s' , 'write/s' , 'access/s' , 'getatt/s'],
 "NFSD server activity" : ['scall/s' , 'badcall/s' , 'packet/s' , 'udp/s' , 'tcp/s' , 'hit/s' , 'miss/s' , 'sread/s' , 'swrite/s' , 'saccess/s' , 'sgetatt/s'],
 "Network Sockets" : ['totsck' , 'tcpsck' , 'udpsck' , 'rawsck' , 'ip-frag' , 'tcp-tw']
@@ -31,11 +31,11 @@ var graph_titles = {
 
 var datetimes = []
 var statistics = []
-    
+
 // nice to have a hash with the description of each element for reference
 function readInput(){
-    datetimes = {}
-    statistics = {}
+    datetimes = [] 
+    statistics = []
     document.getElementById('output').innerHTML=''
     text = document.getElementById('textinput').value
     var lines = text.split("\n")
@@ -96,17 +96,29 @@ function create_graphs(){
 
     
     document.getElementById("output").innerHTML = '' // reset ouput
-
     for (title in graph_titles){
         var id = title.toLowerCase().replace(/[^A-z]/ig,'_')
-        console.log(graph_titles)
+    //    console.log(graph_titles)
         createDiv( id, "output" , title )
-        print(title)
+        var stats = graph_titles[title]
+        var cols = []
+        for (var i in stats){
+            var stat = stats[i]
+            var sar_data = statistics[stat]
+            for ( label in sar_data ){
+                var n = stat + "_" + label
+                var column = sar_data[label]
+                column.push(n)
+                cols.push(column.reverse())
+            }
+        }
+        print(title,cols)
+
     }
 
 }
 
-function print(title){
+function print(title,cols){
     var id = title.toLowerCase().replace(/[^A-z]/ig,'_')
     var col_x = []
     col_x.push('date')
@@ -115,9 +127,12 @@ function print(title){
     }
     columnas = []
     columnas.push(col_x)
-    columnas.push(statistics['%idle']['all'])
+    for (var i in cols){
+        columnas.push(cols[i])
+    }
+    console.log(columnas)
 
-    console.log(statistics)
+//    console.log(statistics)
     var chart_args = {
         bindto: '#graph_'+id,
         data: {
@@ -134,7 +149,7 @@ function print(title){
           }
         }
       }
-    console.log(chart_args)
+ //   console.log(chart_args)
     var chart = c3.generate(chart_args)
 }
 
