@@ -34,8 +34,11 @@ var graph_types = {}
 var datetimes = []
 var statistics = []
 
+//display_progress(0);
+
 // nice to have a hash with the description of each element for reference
 function readInput(){
+//    display_progress(0);
     datetimes = [] 
     statistics = []
     document.getElementById('output').innerHTML=''
@@ -78,6 +81,7 @@ function readInput(){
         }
      } // foreach line
     console.log("OK: Parsing complete")
+//    display_progress(10);
     create_graphs()
 }
 
@@ -99,8 +103,11 @@ function create_graphs(){
 
     
     document.getElementById("output").innerHTML = '' // reset ouput
+    var progress = 10
     for (title in graph_titles){
-    //    console.log(graph_titles)
+        progress = progress + 10
+//        display_progress(progress)
+        console.log("Graphing:" + title)
         var stats = graph_titles[title]
         var cols = []
         var ids = []
@@ -138,6 +145,7 @@ function create_graphs(){
 function print(title,cols,id){
     var col_x = []
     col_x.push('date')
+//    console.log(datetimes)
     for (d in datetimes){
         col_x.push(d)
     }
@@ -151,6 +159,9 @@ function print(title,cols,id){
 //    console.log(statistics)
     var chart_args = {
         bindto: '#graph_'+id,
+        size: { 
+            height: '170'
+        },
         data: {
           x : 'date',
           xFormat : '%Y-%m-%d:%H:%M:%S',
@@ -170,4 +181,44 @@ function print(title,cols,id){
     var chart = c3.generate(chart_args)
 }
 
+function display_progress(progress){
+
+var chart = c3.generate({
+    bindto: '#chart_div',
+    data: {
+        columns: [
+            ['data', progress]
+        ],
+        type: 'gauge',
+    },
+    gauge: {
+//        label: {
+//            format: function(value, ratio) {
+//                return value;
+//            },
+//            show: false // to turn off the min/max labels.
+//        },
+//    min: 0, // 0 is default, //can handle negative min e.g. vacuum / voltage / current flow / rate of change
+//    max: 100, // 100 is default
+//    units: ' %',
+//    width: 39 // for adjusting arc thickness
+    },
+    color: {
+        pattern: ['#FF0000', '#F97600', '#F6C600', '#60B044'], // the three color levels for the percentage values.
+        threshold: {
+//            unit: 'value', // percentage is default
+//            max: 200, // 100 is default
+            values: [30, 60, 90, 100]
+        }
+    },
+    size: {
+        height: 180
+    }
+});
+
+    chart.load({
+        columns: [['data', progress]]
+    });
+
+}
 

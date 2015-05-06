@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html>
-<body onLoad="readInput();">
+  <head>
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/masayuki0812/c3/master/c3.css">
+  </head>
 
-<textarea cols=120 id="textinput" class="textinput" >
+<body onload="readInput()">
+
+<textarea cols=120 rows=1 id="textinput" class="textinput" >

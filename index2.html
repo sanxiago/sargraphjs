@@ -5,6 +5,13 @@
   </head>
  
 <body>
+<p>Paste the output of sadf in the textbox below</p>
+<code>sadf -d -- -A -p</code>
+<br>
+<p>Or pipe it directly with nc to port 443</p>
+<code>sadf -d -- -A -p | graph.sanxiago.com 443</code>
+<br>
+<br>
 
 <textarea cols=120 rows=1 id="textinput" class="textinput" >
 sargraph    599 2015-04-24 00:10:01 UTC all %usr    0.10
@@ -20585,13 +20592,13 @@ sargraph    599 2015-04-24 21:10:01 UTC -   tcp-tw  0
 <br>
 <input type="button" onclick="readInput()" value='graph data'>
 <br>
+<div id="chart_div"></div>
 <div id="output"></div>
-<div id="chart_div"><div>
       
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script src="https://cdn.rawgit.com/masayuki0812/c3/master/c3.js"></script>
  
-<script type="text/javascript" src="include/graph2.js"></script>
+<script type="text/javascript" src="http://cdn.rawgit.com/sanxiago/sargraphjs/master/include/graph2.js"></script>
 <br>
 <a href="http://cdn.rawgit.com/sanxiago/sargraphjs/master/LICENSE"> LICENSE</a>
 <br>
