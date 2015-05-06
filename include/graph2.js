@@ -75,6 +75,7 @@ function readInput(){
             } 
         }
      } // foreach line
+    console.log("OK: Parsing complete")
     create_graphs()
 }
 
@@ -97,29 +98,42 @@ function create_graphs(){
     
     document.getElementById("output").innerHTML = '' // reset ouput
     for (title in graph_titles){
-        var id = title.toLowerCase().replace(/[^A-z]/ig,'_')
     //    console.log(graph_titles)
-        createDiv( id, "output" , title )
         var stats = graph_titles[title]
         var cols = []
+        var ids = []
+        var t = []
         for (var i in stats){
             var stat = stats[i]
             var sar_data = statistics[stat]
-            for ( label in sar_data ){
-                var n = stat + "_" + label
+            for ( label in sar_data ){                
+            var stat = stats[i]
+            var id = title.toLowerCase().replace(/[^A-z0-9]/ig,'_')              
+                t[id] = title
+                if (label != '-' ){ // default label is '-' if not found we have subgraphs
+                    stat = stat + "_" + label
+                    id = id + "_" + label.replace(/[^A-z0-9]/ig,'_')
+                    t[id] = title + " " + label
+                }
+                ids[id]=1
                 var column = sar_data[label]
-                column.push(n)
-                cols.push(column.reverse())
+                column.push(stat)
+                if ( cols[id] == undefined){
+                    cols[id] = []
+                }
+                cols[id].push(column.reverse())
             }
         }
-        print(title,cols)
+        for( var id in ids){
+            createDiv( id, "output" , t[id] )
+            print(t[id],cols[id],id)
+        }
 
     }
 
 }
 
-function print(title,cols){
-    var id = title.toLowerCase().replace(/[^A-z]/ig,'_')
+function print(title,cols,id){
     var col_x = []
     col_x.push('date')
     for (d in datetimes){
@@ -130,7 +144,7 @@ function print(title,cols){
     for (var i in cols){
         columnas.push(cols[i])
     }
-    console.log(columnas)
+//    console.log(columnas)
 
 //    console.log(statistics)
     var chart_args = {
@@ -144,7 +158,7 @@ function print(title,cols){
           x : {
             type : 'timeseries',
             tick : {
-                format : "%H:%M" // https://github.com/mbostock/d3/wiki/Time-Formatting#wiki-format
+                format : "%Y-%m-%d %H:%M" // https://github.com/mbostock/d3/wiki/Time-Formatting#wiki-format
             }
           }
         }
