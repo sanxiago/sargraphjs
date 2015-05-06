@@ -1,0 +1,13 @@
+2015-05-06
+
+I was able to make some progress, dropped the google API and used  D3 as suggested by Wolf (Thanks its way cooler)
+
+I also changed to use the default sadf input as it seems some previous versions such as the ones in RHEL5 did not print headers correctly, a drawback is this change makes bigger files and takes a bit more time to parse, Added support for customizable graphs.
+
+The file is calling 2 external dependencies D3 and C3, but can be bundled.
+
+I have not completed proper error handling it will fail silently, if it does you will need to look at the javascript console for more info.
+
+You can try by pasting the output of sadf into the text input here: graph.sanxiago.com You can download the index of graph.sanxiago.com and append data to it, just need to make sure data is inside textinput tags You can pipe to the server and it will return a url :
+sadf -- -A -p | nc graph.sanxiago.com 443
+
