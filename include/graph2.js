@@ -29,6 +29,8 @@ var graph_titles = {
 "Network Sockets" : ['totsck' , 'tcpsck' , 'udpsck' , 'rawsck' , 'ip-frag' , 'tcp-tw']
 }
 
+var graph_types = {}
+
 var datetimes = []
 var statistics = []
 
@@ -152,6 +154,7 @@ function print(title,cols,id){
         data: {
           x : 'date',
           xFormat : '%Y-%m-%d:%H:%M:%S',
+          type: 'area-spline' ,
           columns: columnas
         },
         axis : {
