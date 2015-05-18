@@ -130,7 +130,7 @@ function create_graphs(){
                 if ( cols[id] == undefined){
                     cols[id] = []
                 }
-                cols[id].push(column.reverse())
+                cols[id].push(column)
             }
         }
         for( var id in ids){
@@ -177,7 +177,7 @@ function print(title,cols,id){
           }
         }
       }
- //   console.log(chart_args)
+   console.log(chart_args)
     var chart = c3.generate(chart_args)
 }
 
