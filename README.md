@@ -1,5 +1,5 @@
 # sargraphjs
-sargraphjs: Create graphs from systat sadf output using google charts
+sargraphjs: Create graphs from systat sadf output using javascript
 <br>-----</br>
 Santiago Velasco( sargraphjs"A-MAIL-SIGN"sanxiago.com )
 
