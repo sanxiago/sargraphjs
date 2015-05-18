@@ -130,6 +130,9 @@ function create_graphs(){
                 if ( cols[id] == undefined){
                     cols[id] = []
                 }
+                column.reverse()
+                column.push(column.shift())
+                column.reverse()
                 cols[id].push(column)
             }
         }
