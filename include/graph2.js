@@ -2,7 +2,7 @@
 
 // human friendly titles based on the first line
 var graph_titles = { 
-"CPU utilization" : [ '%usr', '%nice', '%sys', '%iowait' , '%steal' , '%irq' , '%soft', '%guest' , '%idle' ],
+"CPU utilization" : [ '%usr', '%nice', '%sys', '%iowait' , '%steal' , '%irq' , '%soft', '%guest' , '%user' , '%system' ],
 "Task creation" : ['proc/s' ],
 "Context switching activity" : [ "cswch/s" ],
 "Swapping statistics " : ['pswpin/s' , 'pswpout/s' ],
@@ -81,6 +81,7 @@ function readInput(){
         }
      } // foreach line
     console.log("OK: Parsing complete")
+    console.log(statistics);
 //    display_progress(10);
     create_graphs()
 }
