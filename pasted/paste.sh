@@ -1,8 +1,8 @@
 #!/bin/bash
 ulimit -c 0
-ulimit -f 4000
-ulimit -t 60
-ulimit -m 4000
+ulimit -f 8000
+ulimit -t 300
+ulimit -m 8000
 localpath=/home/paste
 outhash=$(sha256sum <<< "${REMOTE_HOST}_$(date +%s )" | cut -d' ' -f1)
 file="${localpath}/out/${outhash}.html"

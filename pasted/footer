@@ -3,7 +3,7 @@
 <input type="button" onclick="readInput()" value='graph data'>
 <br>
 <div id="chart_div"></div>
-<div id="output"></div>
+<div id="output">Data Is loading please wait...</div>
 
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script src="https://cdn.rawgit.com/masayuki0812/c3/master/c3.js"></script>
