@@ -34,15 +34,24 @@ var graph_types = {}
 var datetimes = []
 var statistics = []
 
-//display_progress(0);
 
-// nice to have a hash with the description of each element for reference
+
+//    document.getElementByID('output').innerHTML='';
+
+
+
 function readInput(){
-//    display_progress(0);
+    text = document.getElementById('textinput').value
+    d = ParseSadf(text)
+    datetimes = d[0]
+    statistics = d[1]
+    create_buttons(graph_titles)
+}
+
+
+function ParseSadf(text){
     datetimes = [] 
     statistics = []
-    document.getElementById('output').innerHTML=''
-    text = document.getElementById('textinput').value
     var lines = text.split("\n")
    for(var x in lines){
         line = lines[x]
@@ -81,35 +90,47 @@ function readInput(){
         }
      } // foreach line
     console.log("OK: Parsing complete")
-    console.log(statistics);
-//    display_progress(10);
-    create_graphs()
+//    console.log(statistics);
+    return [ datetimes , statistics ]
 }
 
-function create_graphs(){
-    function createDiv(id,target,title) {
+
+
+function createDiv(id,target,title) {
+        if(document.getElementById("output_"+id)==null){
         parentElement = document.getElementById(target)
         var d = document.createElement("div")
         d.setAttribute("id", "output_"+id)
         parentElement.appendChild(d)
         parentElement = document.getElementById("output_"+id)
-        var d = document.createElement("p")
-        d.innerHTML = title
-        d.setAttribute("id", "title_"+id)
-        parentElement.appendChild(d)
         var d = document.createElement("div")
         d.setAttribute("id" , "graph_"+id)
         parentElement.appendChild(d)
-    }
+        var b = document.createElement("input")
+        b.setAttribute("type", "button")
+        b.setAttribute("onClick", "create_graph('"+title+"')")
+        b.setAttribute("value", title)
+        parentElement.appendChild(b)
+        }
+}
 
-    
-    document.getElementById("output").innerHTML = '' // reset ouput
-    var progress = 10
+function create_graphs(graph_titles){
     for (title in graph_titles){
-        progress = progress + 10
-//        display_progress(progress)
-        console.log("Graphing:" + title)
+    console.log(title)
+        create_graph(title)
+    }
+}
+
+function create_buttons(graph_titles){
+    for (title in graph_titles){
+        var id = title.toLowerCase().replace(/[^A-z0-9]/ig,'_')              
+        createDiv( id, "output" , title )
+    }
+}
+
+function create_graph(title){
         var stats = graph_titles[title]
+        console.log("Graphing:" + title)
         var cols = []
         var ids = []
         var t = []
@@ -122,11 +143,14 @@ function create_graphs(){
                 t[id] = title
                 if (label != '-' ){ // default label is '-' if not found we have subgraphs
                     stat = stat + "_" + label
+                    var parent_id = id
                     id = id + "_" + label.replace(/[^A-z0-9]/ig,'_')
                     t[id] = title + " " + label
+                    createDiv( id, "output_"+parent_id , label )
                 }
                 ids[id]=1
                 var column = sar_data[label]
+                if ( column[0] != stat){
                 column.push(stat)
                 if ( cols[id] == undefined){
                     cols[id] = []
@@ -134,33 +158,34 @@ function create_graphs(){
                 column.reverse()
                 column.push(column.shift())
                 column.reverse()
+                }
                 cols[id].push(column)
             }
         }
         for( var id in ids){
-            createDiv( id, "output" , t[id] )
+            console.log(id)
             print(t[id],cols[id],id)
         }
-
-    }
-
 }
+
+
+
 
 function print(title,cols,id){
     var col_x = []
     col_x.push('date')
-//    console.log(datetimes)
+
     for (d in datetimes){
         col_x.push(d)
     }
+
     columnas = []
     columnas.push(col_x)
+
     for (var i in cols){
         columnas.push(cols[i])
     }
-//    console.log(columnas)
 
-//    console.log(statistics)
     var chart_args = {
         bindto: '#graph_'+id,
         size: { 
@@ -182,47 +207,7 @@ function print(title,cols,id){
         }
       }
    console.log(chart_args)
-    var chart = c3.generate(chart_args)
+   var chart = c3.generate(chart_args)
 }
 
-function display_progress(progress){
-
-var chart = c3.generate({
-    bindto: '#chart_div',
-    data: {
-        columns: [
-            ['data', progress]
-        ],
-        type: 'gauge',
-    },
-    gauge: {
-//        label: {
-//            format: function(value, ratio) {
-//                return value;
-//            },
-//            show: false // to turn off the min/max labels.
-//        },
-//    min: 0, // 0 is default, //can handle negative min e.g. vacuum / voltage / current flow / rate of change
-//    max: 100, // 100 is default
-//    units: ' %',
-//    width: 39 // for adjusting arc thickness
-    },
-    color: {
-        pattern: ['#FF0000', '#F97600', '#F6C600', '#60B044'], // the three color levels for the percentage values.
-        threshold: {
-//            unit: 'value', // percentage is default
-//            max: 200, // 100 is default
-            values: [30, 60, 90, 100]
-        }
-    },
-    size: {
-        height: 180
-    }
-});
-
-    chart.load({
-        columns: [['data', progress]]
-    });
-
-}
 
