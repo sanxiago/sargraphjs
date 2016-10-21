@@ -1,14 +1,15 @@
 </textarea>
 <br>
-<input type="button" onclick="readInput()" value='graph data'>
+<input type="button" onclick="javascript:create_graphs(graph_titles)" value='Create All Graphs'>
+<br>
 <br>
 <div id="chart_div"></div>
-<div id="output">Data Is loading please wait...</div>
+<div id="output"></div>
 
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script src="https://cdn.rawgit.com/masayuki0812/c3/master/c3.js"></script>
 
-<script type="text/javascript" src="http://cdn.rawgit.com/sanxiago/sargraphjs/master/include/graph2.js"></script>
+<script type="text/javascript" src="../include/graph2.js"></script>
 <br>
 <a href="http://cdn.rawgit.com/sanxiago/sargraphjs/master/LICENSE"> LICENSE</a>
 <br>
