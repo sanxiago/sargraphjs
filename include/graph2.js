@@ -95,40 +95,58 @@ function ParseSadf(text){
 }
 
 
+function togglediv(id) {
+        var id = "graph_"+id
+        console.log("toggle "+id)
+        var div = document.getElementById(id);
+            div.style.display = div.style.display == "none" ? "block" : "none";
+}
 
 function createDiv(id,target,title) {
         if(document.getElementById("output_"+id)==null){
         parentElement = document.getElementById(target)
-        var d = document.createElement("div")
+        var b = document.createElement("input")
+        b.setAttribute("type", "button")
+        b.setAttribute("onClick", "create_graph('"+title+"')")
+        b.setAttribute("value", title)
+        parentElement.appendChild(b)
+       var d = document.createElement("div")
         d.setAttribute("id", "output_"+id)
         parentElement.appendChild(d)
         parentElement = document.getElementById("output_"+id)
         var d = document.createElement("div")
         d.setAttribute("id" , "graph_"+id)
         parentElement.appendChild(d)
-        var b = document.createElement("input")
-        b.setAttribute("type", "button")
-        b.setAttribute("onClick", "create_graph('"+title+"')")
-        b.setAttribute("value", title)
-        parentElement.appendChild(b)
         }
 }
 
 function create_graphs(graph_titles){
     for (title in graph_titles){
-    console.log(title)
+        console.log(title)
         create_graph(title)
     }
 }
 
 function create_buttons(graph_titles){
     for (title in graph_titles){
-        var id = title.toLowerCase().replace(/[^A-z0-9]/ig,'_')              
+        var id = generate_id(title)
         createDiv( id, "output" , title )
     }
 }
 
+function generate_id(string){
+        var id = string.toLowerCase().replace(/[^A-z0-9]/ig,'_')
+        return id
+}
+    
+
 function create_graph(title){
+        var id = generate_id(title)
+        var div = document.getElementById("graph_"+id)
+        console.log(div.childElementCount)
+        if(div.childElementCount > 1 ){
+            togglediv(id)
+        }
         var stats = graph_titles[title]
         console.log("Graphing:" + title)
         var cols = []
@@ -139,14 +157,14 @@ function create_graph(title){
             var sar_data = statistics[stat]
             for ( label in sar_data ){                
             var stat = stats[i]
-            var id = title.toLowerCase().replace(/[^A-z0-9]/ig,'_')              
+            var id = generate_id(title)
                 t[id] = title
-                if (label != '-' ){ // default label is '-' if not found we have subgraphs
+                if (label != '-' ){ // default label is '-' if not found we have subgraphs need to do this  better, should not create stuff here
                     stat = stat + "_" + label
                     var parent_id = id
-                    id = id + "_" + label.replace(/[^A-z0-9]/ig,'_')
+                    id = id + "_" + generate_id(label)
                     t[id] = title + " " + label
-                    createDiv( id, "output_"+parent_id , label )
+                    createDiv( id, "graph_"+parent_id , title+" "+label )
                 }
                 ids[id]=1
                 var column = sar_data[label]
@@ -158,8 +176,10 @@ function create_graph(title){
                 column.reverse()
                 column.push(column.shift())
                 column.reverse()
-                }
                 cols[id].push(column)
+                }else {
+                    return
+                }
             }
         }
         for( var id in ids){
