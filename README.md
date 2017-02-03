@@ -18,3 +18,7 @@ You can also pipe the output of sadf using netcat to the server and it will crea
 
 sadf -- -A -p | nc graph.sanxiago.com 443
 
+You can use a simple loop to generate a graph for the last 30 days:
+
+for i in $(ls -1rt /var/log/sa/sa??); do sadf $i -- -A -p 21600;  done | nc graph.sanxiago.com 443
+
