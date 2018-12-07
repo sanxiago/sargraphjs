@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/masayuki0812/c3/master/c3.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/masayuki0812/c3/c3.css">
   </head>
 
 <body onload="readInput()">
